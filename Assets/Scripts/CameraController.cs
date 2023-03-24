@@ -32,10 +32,19 @@ namespace Archer
         // Tiempo que tarda la cámara en moverse a la nueva ubicación con Vector3.Lerp()
         [SerializeField]
         private float travelTime;
+       
 
         private void Update()
         {
-  
+
+            Vector3 newPos = target.transform.position + offset + (target.transform.forward * -distance);
+            transform.position = Vector3.Lerp(transform.position, newPos, travelTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, target.transform.rotation, travelTime);
+            this.transform.LookAt(target.transform.position + offset);
+
+        
+
+
         }
 
     }

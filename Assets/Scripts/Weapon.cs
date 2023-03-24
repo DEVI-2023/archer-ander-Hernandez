@@ -31,9 +31,11 @@ namespace Archer
             // Si ha colisionado...
             if (hit)
             {
+                
                 // ... comprobar si le ha dado al enemigo
                 if (raycastHit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
                 {
+                    
                     // Si choca con el enemigo, obtenemos una referencia al componente Enemy para notificar que ha recibido un hit
                     Debug.Log("Hit enemy");
                     var enemy = raycastHit.collider.GetComponent<Enemy>();
