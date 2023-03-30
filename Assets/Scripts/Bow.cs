@@ -26,6 +26,9 @@ namespace Archer
         [SerializeField]
         private Transform handPosition;
 
+       
+
+        
       
 
         private Animator animator;
@@ -43,6 +46,7 @@ namespace Archer
         {
             // Cuando se pulsa espacio, producimos un disparo
             StartCoroutine(Shoot());
+            animator.SetTrigger("Shoot");
         }
 
         private IEnumerator Shoot()
@@ -50,19 +54,21 @@ namespace Archer
           
 
             yield return new WaitForSeconds(0.3f);
-
+            
 
             // Instanciar una flecha
-           
-
+            GameObject arrow = Instantiate(arrowPrefab, handPosition);
+            arrow.transform.rotation = transform.rotation;
+            arrow.GetComponent<Rigidbody>().AddForce(this.transform.forward*force);
             // Colocar la flecha en el punto de referencia de la mano de la arquera
-         
 
+            
             // Orientar la flecha hacia delante con respecto a la arquera
-           
+
+
 
             // Aplicar una fuerza a la flecha para que salga disparada
-          
+
         }
     }
 

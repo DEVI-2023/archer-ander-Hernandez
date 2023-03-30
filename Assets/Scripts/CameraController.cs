@@ -40,7 +40,7 @@ namespace Archer
             Vector3 newPos = target.transform.position + offset + (target.transform.forward * -distance);
             Relocatecamera(newPos);
             
-            
+          
 
 
 
@@ -49,7 +49,7 @@ namespace Archer
         private void Relocatecamera(Vector3 newPos)
         {
             transform.position = Vector3.Lerp(transform.position, newPos, travelTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, target.transform.rotation, travelTime);
+            
             this.transform.LookAt(target.transform.position + offset);
         }
     }
